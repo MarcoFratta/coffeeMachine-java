@@ -1,5 +1,6 @@
 package org.voitu;
 
+import java.util.Arrays;
 import java.util.function.BiFunction;
 
 public enum Command {
@@ -19,7 +20,7 @@ public enum Command {
     ),
     UPDATE_PRODUCT("NP-", (m, i) -> {
         String[] s = i.substring(3).split("-");
-        if (!(s.length == 2)) {
+        if (s.length == 2) {
             try {
                 ProductType type = ProductType.valueOf(s[0]);
                 int value = Integer.parseInt(s[1]);
@@ -29,7 +30,7 @@ public enum Command {
                 return e.getMessage();
             }
         }
-        return "";
+        return Arrays.toString(s);
     }),
     UPDATE_STATE("ST-", (m, i) -> {
         String s = i.substring(3);
@@ -43,6 +44,18 @@ public enum Command {
             }
         }
         return "";
+    }),SELF_CHECK("SC-", (m, i) -> {
+        String s = i.substring(3);
+        if (!(s.isEmpty())) {
+            try {
+                int val = Integer.parseInt(s);
+                m.setPerformedSelf(val);
+                return "Self check number changed";
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+        return "Input error";
     });
 
 

@@ -22,6 +22,7 @@ public class ProductsUI {
             this.labels.get(name).setText(name + ":" + val);
         } else {
             this.labels.put(name, new Label(name + ":" + val));
+            this.content.getChildren().add(this.labels.get(name));
         }
     }
 }

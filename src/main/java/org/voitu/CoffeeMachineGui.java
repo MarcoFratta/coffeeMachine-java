@@ -46,6 +46,9 @@ public class CoffeeMachineGui implements View{
         this.productScroll.setContent(productBox);
 
         this.controller.registerListener(c -> Platform.runLater(()-> {
+            this.controller.getCoffeeMachine().getProductNumber().forEach((k,v)->{
+                productsUI.update(k.toString(), v);
+            });
             this.recover.setDisable(this.controller.getCoffeeMachine().getStatus() != MachineStatus.RECOVER);
             this.refill.setDisable(this.controller.getCoffeeMachine().getStatus() != MachineStatus.REFILL);
             this.status.setText(STATUS_PREFIX + this.controller.getCoffeeMachine().getStatus());
