@@ -22,7 +22,7 @@ public class LoggerUI implements View{
             Platform.runLater(()->{
                 while (c.next()) {
                     if (c.wasAdded()) {
-                        System.out.println("logging");
+                        //System.out.println("logging");
                         this.content.getChildren().addAll(
                                 this.createView(c.getAddedSubList()));
                     }

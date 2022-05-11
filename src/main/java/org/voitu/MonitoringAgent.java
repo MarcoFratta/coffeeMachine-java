@@ -17,9 +17,9 @@ public class MonitoringAgent extends Thread {
 		while (true){
 			try {
 				//LoggerImpl.getLogger().log("Info", "Reading...");
-				System.out.println("receiving...: ");
+				//System.out.println("receiving...: ");
 				final String msg = this.channel.receiveMsg();
-				System.out.println("received: " + msg);
+				//System.out.println("received: " + msg);
 				LoggerImpl.getLogger().log("Input", msg);
 				for (final Command command: Command.values()) {
 					if(msg.startsWith(command.getCommandPrefix())){
